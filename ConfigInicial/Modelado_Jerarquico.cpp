@@ -41,7 +41,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Modelado jerarquico", nullptr, nullptr);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Modelado jerarquico, Capistran Ponce Manuel Emiliano", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
@@ -259,6 +259,7 @@ int main() {
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);//D
+		//vamos a hacer la practica
 
 		glBindVertexArray(0);
 
@@ -278,17 +279,17 @@ int main() {
  void Inputs(GLFWwindow *window) {
 	 if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE
 		 glfwSetWindowShouldClose(window, true);
-	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		 movX += 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		 movX += 0.08f;
+	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		 movX -= 0.08f;
 	 if (glfwGetKey(window,GLFW_KEY_UP) == GLFW_PRESS)
 		 movY += 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
 		 movY -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		 movZ -= 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		 movZ -= 0.08f;
+	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		 movZ += 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
 		 rot += 0.18f;
