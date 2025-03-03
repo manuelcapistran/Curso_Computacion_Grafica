@@ -1,3 +1,8 @@
+//Capistran Ponce Manuel Emiliano
+//115006564
+//practica 5
+
+
 #include<iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
