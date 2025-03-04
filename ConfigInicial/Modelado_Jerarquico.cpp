@@ -31,7 +31,13 @@ float	hombro = 0.0f,
 codo = 0.0f,
 palma = 0.0f,
 dedo1 = 0.0f,
-dedo1b = 0.0f;
+dedo1b = 0.0f,
+dedo2 = 0.0f,
+dedo2b = 0.0f,
+dedo2c = 0.0f,
+dedo3b = 0.0f,
+dedo4b = 0.0f,
+dedo5b = 0.0f;
 
 
 
@@ -191,6 +197,9 @@ int main() {
 		//se agregaron 2 elementos nuevos y ayudan con la informacion de la posicion de los elementos 
 		glm::mat4 modelTemp = glm::mat4(1.0f); //Temp
 		glm::mat4 modelTemp2 = glm::mat4(1.0f); //Temp
+		glm::mat4 modelTemp3 = glm::mat4(1.0f); //Temp
+		glm::mat4 modelTemp4 = glm::mat4(1.0f); //Temp
+		glm::mat4 modelTemp5 = glm::mat4(1.0f); //Temp
 
 
 
@@ -247,24 +256,153 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);//C
 
 		//model dedo1 A
-		model = glm::translate(modelTemp, glm::vec3(0.25f, 0.35f, 0.357f));
-		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.25f));
-		color = glm::vec3(0.0f, 1.0f, 1.0f);
+		// Dedo 1 - Primera falange
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, 0.357f)); // Posicionar en la palma
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotar en su pivote
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		modelTemp = model; // Guardar posición para el siguiente segmento
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(1.0f, 0.2f, 0.2f); // Rojo
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//D
-		//model dedo1 B
-		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f));
-		modelTemp = model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 0.3f, 0.25f));
-		color = glm::vec3(1.0f, 0.0f, 1.0f);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 1 - Segunda falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Posicionar en la primera falange
+		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotar en su pivote
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		modelTemp = model; // Guardar posición para la siguiente falange
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(1.0f, 0.3f, 0.3f); // Rojo
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);//D
-		//vamos a hacer la practica
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 1 - Tercera falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Posicionar en la segunda falange
+		model = glm::rotate(model, glm::radians(dedo1b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotar en su pivote
+		model = glm::translate(model, glm::vec3(0.375f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		model = glm::scale(model, glm::vec3(0.75f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(1.0f, 0.4f, 0.4f); // Rojo
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+		//vamos a hacer la practica 5
+		// Dedo 2 - Primera falange
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, 0.15f)); // Cambio en Y para separarlo
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación propia del dedo
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear la siguiente falange
+		modelTemp = model; // Guardar posición base para la siguiente parte
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
+		color = glm::vec3(0.2f, 1.0f, 0.2f); // Verde
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 2 - Segunda falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Partir de la falange anterior
+		model = glm::rotate(model, glm::radians(dedo2b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación de esta articulación
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear la siguiente falange
+		modelTemp = model; // Guardar posición para la tercera falange
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
+		color = glm::vec3(0.4f, 1.0f, 0.4f); // Verde
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 2 - Tercera falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Partir de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo2b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación de la última articulación
+		model = glm::translate(model, glm::vec3(0.375f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		model = glm::scale(model, glm::vec3(0.75f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(0.6f, 1.0f, 0.6f); // Verde
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+		// Dedo 3 - Primera falange
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, -0.07f)); // Cambio en Y para separarlo
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación propia del dedo
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear la siguiente falange
+		modelTemp = model; // Guardar posición base para la siguiente parte
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
+		color = glm::vec3(0.2f, 0.2f, 1.0f); // Azul
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 3 - Segunda falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Partir de la falange anterior
+		model = glm::rotate(model, glm::radians(dedo3b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación de esta articulación
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear la siguiente falange
+		modelTemp = model; // Guardar posición para la tercera falange
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
+		color = glm::vec3(0.4f, 0.4f, 1.0f); // Azul
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 3 - Tercera falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Partir de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo3b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación de la última articulación
+		model = glm::translate(model, glm::vec3(0.375f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		model = glm::scale(model, glm::vec3(0.75f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(0.6f, 0.6f, 1.0f); // Azul
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+		// Dedo 4 - Primera falange
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, 0.35f, -0.27f)); // Cambio en Y para separarlo
+		model = glm::rotate(model, glm::radians(dedo1), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación propia del dedo
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear la siguiente falange
+		modelTemp = model; // Guardar posición base para la siguiente parte
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
+		color = glm::vec3(1.0f, 1.0f, 0.2f); // Amarillo
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 4 - Segunda falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Partir de la falange anterior
+		model = glm::rotate(model, glm::radians(dedo4b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación de esta articulación
+		model = glm::translate(model, glm::vec3(0.5f, 0.0f, 0.0f)); // Alinear la siguiente falange
+		modelTemp = model; // Guardar posición para la tercera falange
+		model = glm::scale(model, glm::vec3(1.0f, 0.15f, 0.125f));
+		color = glm::vec3(1.0f, 1.0f, 0.4f); // Amarillo
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 4 - Tercera falange
+		model = glm::translate(modelTemp, glm::vec3(0.5f, 0.0f, 0.0f)); // Partir de la segunda falange
+		model = glm::rotate(model, glm::radians(dedo4b), glm::vec3(0.0f, 0.0f, 1.0f)); // Rotación de la última articulación
+		model = glm::translate(model, glm::vec3(0.375f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		model = glm::scale(model, glm::vec3(0.75f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(1.0f, 1.0f, 0.6f); // Amarillo
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+
+		// Dedo 5 - Primera falange
+		model = glm::translate(modelTemp2, glm::vec3(0.25f, -0.1f, 0.357f)); // Posicionar en la palma
+		model = glm::rotate(model, glm::radians(dedo5b), glm::vec3(0.0f, 1.0f, 0.0f)); // Rotar en su pivote
+		model = glm::translate(model, glm::vec3(0.375f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		modelTemp = model; // Guardar posición para el siguiente segmento
+		model = glm::scale(model, glm::vec3(0.75f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(1.0f, 0.2f, 1.0f); // Magenta
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		// Dedo 5 - Segunda falange
+		model = glm::translate(modelTemp, glm::vec3(0.375f, 0.0f, 0.0f)); // Posicionar en la primera falange
+		model = glm::rotate(model, glm::radians(dedo5b), glm::vec3(0.0f,1.0f, 0.0f)); // Rotar en su pivote
+		model = glm::translate(model, glm::vec3(0.375f, 0.0f, 0.0f)); // Alinear al siguiente segmento
+		modelTemp = model; // Guardar posición para la siguiente falange
+		model = glm::scale(model, glm::vec3(0.75f, 0.15f, 0.125f)); // Escalar
+		color = glm::vec3(1.0f, 0.4f, 1.0f); // Magenta
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		
+
 
 		glBindVertexArray(0);
 
@@ -324,6 +462,24 @@ int main() {
 		 dedo1b += 0.18f;
 	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 		 dedo1b -= 0.18f;
+	 // se agrega la velocidad del dedo 2
+	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		 dedo2b += 0.19f;
+	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		 dedo2b -= 0.19f;
+	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		 dedo3b += 0.20f;
+	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		 dedo3b -= 0.20f;
+	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		 dedo4b += 0.21f;
+	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		 dedo4b -= 0.21f;
+	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
+		 dedo5b += 0.19f;
+	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		 dedo5b -= 0.19f;
+	
  }
 
 
