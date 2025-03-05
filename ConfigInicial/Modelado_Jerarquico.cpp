@@ -52,7 +52,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Modelado jerarquico, Capistran Ponce Manuel Emiliano", nullptr, nullptr);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 5 , Capistran Ponce Manuel Emiliano", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
@@ -468,14 +468,17 @@ int main() {
 		 dedo2b += 0.19f;
 	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 		 dedo2b -= 0.19f;
+	 // se agrega la velocidad del dedo 3
 	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
 		 dedo3b += 0.20f;
 	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 		 dedo3b -= 0.20f;
+	 // se agrega la velocidad del dedo 4
 	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
 		 dedo4b += 0.21f;
 	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 		 dedo4b -= 0.21f;
+	 // se agrega la velocidad del dedo 5
 	 if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 		 dedo5b += 0.19f;
 	 if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
