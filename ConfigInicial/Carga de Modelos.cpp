@@ -1,3 +1,8 @@
+//Capistran Ponce Manuel Emiliano
+//115006564
+//practica 6
+//entrega: 14/03/2025
+
 // Std. Includes
 #include <string>
 
@@ -54,7 +59,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Carga de modelos y camara sintetica", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Practica 5, Capistran Ponce Manuel Emiliano", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -95,7 +100,14 @@ int main( )
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
+    Model repisa((char*)"Models/repisa.obj");
+    Model canasta((char*)"Models/canasta.obj");
+    Model mesa((char*)"Models/mesa.obj");
+    Model silla((char*)"Models/silla.obj");
+    Model sillon((char*)"Models/sillon.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
+
+  
     
   
 
@@ -126,11 +138,44 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         dog.Draw(shader);
 
-        //ejercicio en 
-        model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        ////ejercicio en 
+        //model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
+        //model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        //dog.Draw(shader);
+
+        //dibjando la repisa
+        model = glm::translate(model, glm::vec3(1.5f, -0.3f, 1.0f));
+        model = glm::scale(model, glm::vec3(0.15f, 0.15f, 0.15f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        repisa.Draw(shader);
+
+        //dibujando el canasta
+        model = glm::translate(model, glm::vec3(-5.0f, -0.3f, -5.0f));
+        model = glm::scale(model, glm::vec3(10.0f, 10.0f, 10.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        canasta.Draw(shader);
+
+        //dibujando el mesa
+        model = glm::translate(model, glm::vec3(0.0f, 0.0f, -0.5f));
+        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        mesa.Draw(shader);
+
+        //dibujando la silla 
+        model = glm::translate(model, glm::vec3(0.0f, 0.025f, -0.75f));
+        model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, -1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(0.30f, 0.30f, 0.30f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        silla.Draw(shader);
+
+        //dibujando el sillon
+        model = glm::translate(model, glm::vec3(5.0f, 0.0f, 10.0f));
+        model = glm::rotate(model, glm::radians(120.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(3.5f, 3.5f, 3.5f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        sillon.Draw(shader);
+
 
         // Swap the buffers
         glfwSwapBuffers( window );
