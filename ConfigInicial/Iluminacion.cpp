@@ -1,4 +1,10 @@
 
+
+//Capistran Ponce Manuel Emiliano
+//115006564
+//iluminacion
+//entrega: 23/03/2025
+
 // Std. Includes
 #include <string>
 
