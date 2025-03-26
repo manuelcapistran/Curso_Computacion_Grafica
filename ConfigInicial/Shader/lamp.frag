@@ -1,9 +1,9 @@
 #version 330 core
-out vec4 FragColor;
-  
 
+out vec4 FragColor;
+uniform vec3 overrideColor;
 
 void main()
 {
-     FragColor = vec4(1.0f);
+    FragColor = vec4(overrideColor, 1.0f);
 }
