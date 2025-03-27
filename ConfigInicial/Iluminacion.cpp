@@ -301,7 +301,7 @@ int main()
 
 
 
-        //glDrawArrays(GL_TRIANGLES, 0, 36);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
         glBindVertexArray(0);
@@ -313,22 +313,22 @@ int main()
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
         glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
-        ////primer cubo de luz
-        //model = glm::mat4(1.0f);
-        //model = glm::translate(model, lightPos + movelightPos);
-        //model = glm::scale(model, glm::vec3(0.3f));
-        //glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //glBindVertexArray(VAO);
-        //glDrawArrays(GL_TRIANGLES, 0, 36);
+        //primer cubo de luz
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos + movelightPos);
+        model = glm::scale(model, glm::vec3(0.3f));
+        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        //// Segundo cubo de luz
-        //model = glm::mat4(1.0f);
-        //model = glm::translate(model, lightPos2 + movelightPos); // Usa la nueva posición
-        //model = glm::scale(model, glm::vec3(0.3f));
-        //glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        //glBindVertexArray(VAO);
-        //glDrawArrays(GL_TRIANGLES, 0, 36);
-        //glBindVertexArray(0);
+        // Segundo cubo de luz
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, lightPos2 + movelightPos); // Usa la nueva posición
+        model = glm::scale(model, glm::vec3(0.3f));
+        glUniformMatrix4fv(glGetUniformLocation(lampshader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        glBindVertexArray(VAO);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glBindVertexArray(0);
 
 
         // sol y luna 
