@@ -1,3 +1,9 @@
+//Capistran Ponce Manuel Emiliano
+//115006564
+//Animacion1
+//entrega: 06/04/2025
+//practica10
+
 #include <iostream>
 #include <cmath>
 
@@ -131,7 +137,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Animacion basica", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Animacion 1, Capistran Ponce Manuel Emiliano", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
