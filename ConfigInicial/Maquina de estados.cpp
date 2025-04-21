@@ -1,8 +1,8 @@
 //Capistran Ponce Manuel Emiliano
 //115006564
 //Animación por maquina de estados 
-//Practica 10
-//Entrega: 19/04/2025
+//Practica 11
+//Entrega: 21/04/2025
 
 #include <iostream>
 #include <cmath>
@@ -137,7 +137,7 @@ int main()
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);*/
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Capistran Ponce Manuel Emiliano, Animacion maquina de estados", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Capistran Ponce Manuel Emiliano Practica 11", nullptr, nullptr);
 
 	if (nullptr == window)
 	{
@@ -516,42 +516,115 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	}
 	
 }
+int pathState = 0; // 0 a 6, cada uno es un paso
+float advanceCounter = 0.0f; // para medir cuánto ha avanzado
+float rotationTarget = 0.0f; // para rotaciones controladas
+
+
 void Animation() {
 	if (AnimBall)
-	{
 		rotBall += 0.4f;
-		//printf("%f", rotBall);
-	}
 	
-	if (AnimDog)
-	{
-		rotDog -= 0.6f;
-		//printf("%f", rotBall);
-	}
-	if (dogAnim == 1) { //animacion de caminar 
-		if (!step) { //estado 1 
-			RLegs += 0.3f;
-			FLegs += 0.3f;
-			head += 0.3f;
-			tail += 0.3f;
-			if (RLegs > 15.0f) //condicion
-				step = true;
-		}
-		else
-		{
-			RLegs -= 0.3f;
-			FLegs -= 0.3f;
-			head -= 0.3f;
-			tail -= 0.3f;
-			if (RLegs < -15.0f) //condicion
-				step = false;
+	float moveSpeed = 0.6f * deltaTime;     // mueve 0.6 unidades por segundo
+	float rotateSpeed = 90.0f * deltaTime;  // rota 90 grados por segundo
+
+	if (dogAnim == 1) {
+		switch (pathState) {
+		case 0: // Avanzar
+			dogPos.z += 0.002f;
+			advanceCounter += 0.002f;
+			if (advanceCounter >= 2.1f) {
+				advanceCounter = 0;
+				rotationTarget = dogRot + 90.0f;
+				pathState = 1;
+			}
+			break;
+
+		case 1: // Girar 90°
+			dogRot += 0.6f;
+			if (dogRot >= rotationTarget) {
+				dogRot = rotationTarget;
+				pathState = 2;
+			}
+			break;
+
+		case 2: // Avanzar
+			dogPos.x += 0.002f;
+			advanceCounter += 0.002f;
+			if (advanceCounter >= 2.0f) {
+				advanceCounter = 0;
+				rotationTarget = dogRot + 90.0f;
+				pathState = 3;
+			}
+			break;
+
+		case 3: // Girar 90°
+			dogRot += 0.6f;
+			if (dogRot >= rotationTarget) {
+				dogRot = rotationTarget;
+				pathState = 4;
+			}
+			break;
+
+		case 4: // Avanzar
+			dogPos.z -= 0.002f;
+			advanceCounter += 0.002f;
+			if (advanceCounter >= 3.5f) {
+				advanceCounter = 0;
+				rotationTarget = dogRot + 135.0f;
+				pathState = 5;
+			}
+			break;
+
+		case 5: // Girar 135°
+			dogRot += 0.6f;
+			if (dogRot >= rotationTarget) {
+				dogRot = rotationTarget;
+				pathState = 6;
+			}
+			break;
+
+		case 6: // Avanzar
+			dogPos.x -= 0.002f;
+			dogPos.z += 0.002f;
+			advanceCounter += 0.002f;
+			if (advanceCounter >= 2.0f) {
+				advanceCounter = 0;
+				rotationTarget = dogRot + 45.0f;
+				pathState = 7;
+			}
+			break;
+
+		case 7: // Girar 45° a la izquierda
+			dogRot += 0.6f;
+			if (dogRot >= rotationTarget) {
+				dogRot = rotationTarget;
+				pathState = 8; // estado final para detener todo
+			}
+			break;
+
+		case 8: // Reinicio automático
+			dogAnim = 0; // detener animación
+			pathState = 0;
+			// dogAnim = 1; //para repetir la animacion 
+			break;
+
+
 		}
 
-		dogPos.z += 0.001;
-		printf("/n%f", RLegs);
+		// Animación de piernas
+		if (!step) {
+			RLegs += 0.3f; FLegs += 0.3f; head += 0.3f; tail += 0.3f;
+			if (RLegs > 15.0f) step = true;
+		}
+		else {
+			RLegs -= 0.3f; FLegs -= 0.3f; head -= 0.3f; tail -= 0.3f;
+			if (RLegs < -15.0f) step = false;
+		}
+		
 	}
-	
 }
+
 
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 {
