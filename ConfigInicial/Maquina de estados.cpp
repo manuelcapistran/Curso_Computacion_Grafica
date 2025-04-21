@@ -1,8 +1,8 @@
 //Capistran Ponce Manuel Emiliano
 //115006564
-//Animación por maquina de estados 
+//AnimaciÃ³n por maquina de estados 
 //Practica 11
-//Entrega: 21/04/2025
+//Entrega: 25/04/2025
 
 #include <iostream>
 #include <cmath>
@@ -517,7 +517,7 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 	
 }
 int pathState = 0; // 0 a 6, cada uno es un paso
-float advanceCounter = 0.0f; // para medir cuánto ha avanzado
+float advanceCounter = 0.0f; // para medir cuÃ¡nto ha avanzado
 float rotationTarget = 0.0f; // para rotaciones controladas
 
 
@@ -537,7 +537,7 @@ void Animation() {
 			}
 			break;
 
-		case 1: // Girar 90°
+		case 1: // Girar 90Â°
 			dogRot += 0.6f;
 			if (dogRot >= rotationTarget) {
 				dogRot = rotationTarget;
@@ -555,7 +555,7 @@ void Animation() {
 			}
 			break;
 
-		case 3: // Girar 90°
+		case 3: // Girar 90Â°
 			dogRot += 0.6f;
 			if (dogRot >= rotationTarget) {
 				dogRot = rotationTarget;
@@ -573,7 +573,7 @@ void Animation() {
 			}
 			break;
 
-		case 5: // Girar 135°
+		case 5: // Girar 135Â°
 			dogRot += 0.6f;
 			if (dogRot >= rotationTarget) {
 				dogRot = rotationTarget;
@@ -592,7 +592,7 @@ void Animation() {
 			}
 			break;
 
-		case 7: // Girar 45° a la izquierda
+		case 7: // Girar 45Â° a la izquierda
 			dogRot += 0.6f;
 			if (dogRot >= rotationTarget) {
 				dogRot = rotationTarget;
@@ -600,8 +600,8 @@ void Animation() {
 			}
 			break;
 
-		case 8: // Reinicio automático
-			dogAnim = 0; // detener animación
+		case 8: // Reinicio automÃ¡tico
+			dogAnim = 0; // detener animaciÃ³n
 			pathState = 0;
 			// dogAnim = 1; //para repetir la animacion 
 			break;
@@ -609,7 +609,7 @@ void Animation() {
 
 		}
 
-		// Animación de piernas
+		// AnimaciÃ³n de piernas
 		if (!step) {
 			RLegs += 0.3f; FLegs += 0.3f; head += 0.3f; tail += 0.3f;
 			if (RLegs > 15.0f) step = true;
