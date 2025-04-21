@@ -524,9 +524,6 @@ float rotationTarget = 0.0f; // para rotaciones controladas
 void Animation() {
 	if (AnimBall)
 		rotBall += 0.4f;
-	
-	float moveSpeed = 0.6f * deltaTime;     // mueve 0.6 unidades por segundo
-	float rotateSpeed = 90.0f * deltaTime;  // rota 90 grados por segundo
 
 	if (dogAnim == 1) {
 		switch (pathState) {
