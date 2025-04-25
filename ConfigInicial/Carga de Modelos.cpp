@@ -105,6 +105,8 @@ int main( )
     Model mesa((char*)"Models/mesa.obj");
     Model silla((char*)"Models/silla.obj");
     Model sillon((char*)"Models/sillon.obj");
+    Model mesaNueva((char*)"Models/mesaNueva.obj");
+    Model compuVieja((char*)"Models/compuVieja.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
 
   
@@ -158,9 +160,9 @@ int main( )
 
         //dibujando el mesa
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, -0.5f));
-        model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+        model = glm::scale(model, glm::vec3(0.001f, 0.001f, 0.001f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        mesa.Draw(shader);
+        compuVieja.Draw(shader);
 
         //dibujando la silla 
         model = glm::translate(model, glm::vec3(0.0f, 0.025f, -0.75f));

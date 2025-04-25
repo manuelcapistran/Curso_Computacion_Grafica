@@ -2,7 +2,7 @@
 //115006564
 //Animación por maquina de estados 
 //Practica 11
-//Entrega: 21/04/2025
+//Entrega: 25/04/2025
 
 #include <iostream>
 #include <cmath>
@@ -528,8 +528,8 @@ void Animation() {
 	if (dogAnim == 1) {
 		switch (pathState) {
 		case 0: // Avanzar
-			dogPos.z += 0.002f;
-			advanceCounter += 0.002f;
+			dogPos.z += 0.003f;
+			advanceCounter += 0.003f;
 			if (advanceCounter >= 2.1f) {
 				advanceCounter = 0;
 				rotationTarget = dogRot + 90.0f;
@@ -546,8 +546,8 @@ void Animation() {
 			break;
 
 		case 2: // Avanzar
-			dogPos.x += 0.002f;
-			advanceCounter += 0.002f;
+			dogPos.x += 0.003f;
+			advanceCounter += 0.003f;
 			if (advanceCounter >= 2.0f) {
 				advanceCounter = 0;
 				rotationTarget = dogRot + 90.0f;
@@ -564,8 +564,8 @@ void Animation() {
 			break;
 
 		case 4: // Avanzar
-			dogPos.z -= 0.002f;
-			advanceCounter += 0.002f;
+			dogPos.z -= 0.003f;
+			advanceCounter += 0.003f;
 			if (advanceCounter >= 3.5f) {
 				advanceCounter = 0;
 				rotationTarget = dogRot + 135.0f;
@@ -582,9 +582,9 @@ void Animation() {
 			break;
 
 		case 6: // Avanzar
-			dogPos.x -= 0.002f;
-			dogPos.z += 0.002f;
-			advanceCounter += 0.002f;
+			dogPos.x -= 0.003f;
+			dogPos.z += 0.003f;
+			advanceCounter += 0.003f;
 			if (advanceCounter >= 2.0f) {
 				advanceCounter = 0;
 				rotationTarget = dogRot + 45.0f;
