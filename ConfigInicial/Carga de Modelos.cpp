@@ -99,7 +99,7 @@ int main( )
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models
-    Model dog((char*)"Models/RedDog.obj");
+    Model dog((char*)"Models/compuNueva.obj");
     Model repisa((char*)"Models/repisa.obj");
     Model canasta((char*)"Models/canasta.obj");
     Model mesa((char*)"Models/mesa.obj");
@@ -142,7 +142,7 @@ int main( )
 
         ////ejercicio en 
         //model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        //model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+        //model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
         //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         //dog.Draw(shader);
 
